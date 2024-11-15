@@ -14,10 +14,11 @@ class PegawaiSeeder extends Seeder
     public function run(): void
     {
         DB ::table('pegawais')-> insert([
-            'pegawai' => 'Muhammad Ridho',
-            'penilai' => 'Tekad Matulatan',
+            'pegawai' => 'Surya Pramadani',
+            'penilai' => 'Ramadhan Saputra',
             'periodemulai' => '12 November sd 12 Desember',
             'periodeselesai' => '12 November sd 12 Desember',
+            'file' => 'APPL_DFD.pdf',
         ]);
     }
 }
