@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pegawais', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->id();
             $table->string('pegawai');
             $table->string('penilai');
             $table->date('periodemulai');
             $table->date('periodeselesai');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
