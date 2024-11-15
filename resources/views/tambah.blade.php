@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -78,7 +79,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <form action="/insert" method="POST" class="custom-form">
+                    <form action="/insert" method="POST" class="custom-form" enctype="multipart/form-data">
                         @csrf
                         <div class="custom-form">
                             <div class="mb-3">
@@ -88,7 +89,7 @@
 
                             <div class="mb-3">
                                 <label for="namaPegawai" class="form-label">Nama Penilai</label>
-                                <input type="text" name="penilai" class="form-control" id="namaPegawai" placeholder="Masukkan Nama Anda">
+                                <input type="text" name="penilai" class="form-control" id="namaPegawai" placeholder="Masukkan Nama Penilai">
                             </div>
 
                             <div class="mb-3">
@@ -100,6 +101,13 @@
                                 <label class="form-label">Periode Penilaian Selesai</label>
                                 <input type="date" name="periodeselesai" class="form-control" id="periodeEnd" value="">
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">File SKP</label>
+                                <input type="file" name="file" class="form-control" id="file" value=""><br>
+                                <small class="text-muted">Masukkan File Pendukung dengan format PDF. <br> Maksimal file 10MB</small>
+                            </div>
+
 
                             <button type="submit">Submit</button>
                         </div>
