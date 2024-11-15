@@ -1,3 +1,5 @@
+
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -69,11 +71,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">No</th>
                         <th scope="col">Nama Pegawai</th>
                         <th scope="col">Nama Penilai</th>
                         <th scope="col">Periode Mulai</th>
                         <th scope="col">Periode Selesai</th>
+                        <th scope="col">File</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                         </tr>
@@ -81,11 +83,15 @@
                     <tbody>
                     @foreach ($data as $isi)
                         <tr>
-                            <th scope="row"> {{ $isi->id }} </th>
                             <td>{{$isi ->pegawai}}</td>
                             <td>{{$isi ->penilai}}</td>
                             <td>{{$isi ->periodemulai}}</td>
                             <td>{{$isi ->periodeselesai}}</td>
+                            <td>
+                            <a href="{{ asset('storage/' . $isi->file) }}" target="_blank">
+                                {{ \Illuminate\Support\Str::limit($isi->file, 20) }} <!-- Batasi menjadi 20 karakter -->
+                            </a>
+                            </td>
                             <td>
                                 Diproses
                             </td>
