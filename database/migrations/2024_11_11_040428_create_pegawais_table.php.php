@@ -16,8 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('pegawai');
             $table->string('penilai');
-            $table->date('periodemulai');
-            $table->date('periodeselesai');
             $table->string('file')->nullable();
             $table->timestamps();
         });

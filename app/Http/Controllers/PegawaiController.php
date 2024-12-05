@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,8 +26,7 @@ class PegawaiController extends Controller
         $validated = $request->validate([
             'pegawai' => 'required|string',
             'penilai' => 'required|string',
-            'periodemulai' => 'required|date',
-            'periodeselesai' => 'required|date',
+            'jenis_kegiatan' => 'required|string',
             'file' => 'required|file|mimes:jpg,png,pdf|max:10240',
         ]);
 
@@ -57,8 +57,7 @@ class PegawaiController extends Controller
         $validated = $request->validate([
             'pegawai' => 'required|string',
             'penilai' => 'required|string',
-            'periodemulai' => 'required|date',
-            'periodeselesai' => 'required|date',
+            'jenis_kegiatan' => 'required|in:a,b,c,d', // Sesuaikan dengan enum terbaru
             'file' => 'nullable|file|mimes:jpg,png,pdf|max:10240',
         ]);
 
@@ -81,5 +80,39 @@ class PegawaiController extends Controller
         $data = Pegawai::find($id);
         $data->delete();
         return redirect()->route('dashboard');
+    }
+
+    public function koreksi(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'status' => 'required|string',
+            'catatan' => 'nullable|string',
+        ]);
+
+        $pegawai = Pegawai::findOrFail($id);
+        $pegawai->update($validated);
+
+        return redirect()->route('dashboard')->with('success', 'Data berhasil dikoreksi.');
+    }
+
+    public function showKoreksi($id)
+    {
+        $data = Pegawai::findOrFail($id);
+        return view('admin.koreksi', compact('data'));
+    }
+
+    public function updateKoreksi(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|string',
+            'catatan_koreksi' => 'nullable|string',
+        ]);
+
+        $pegawai = Pegawai::findOrFail($id);
+        $pegawai->status = $request->input('status');
+        $pegawai->catatan_koreksi = $request->input('catatan_koreksi');
+        $pegawai->save();
+
+        return redirect()->route('dashboard')->with('success', 'Status dan catatan koreksi berhasil diperbarui');
     }
 }

@@ -73,10 +73,11 @@
                         <tr>
                         <th scope="col">Nama Pegawai</th>
                         <th scope="col">Nama Penilai</th>
-                        <th scope="col">Periode Mulai</th>
-                        <th scope="col">Periode Selesai</th>
+                        <th scope="col">Jenis Kegiatan</th>
+                        <th scope="col">Tanggal Submit</th>
                         <th scope="col">File</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Catatan</th>
                         <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -85,19 +86,34 @@
                         <tr>
                             <td>{{$isi ->pegawai}}</td>
                             <td>{{$isi ->penilai}}</td>
-                            <td>{{$isi ->periodemulai}}</td>
-                            <td>{{$isi ->periodeselesai}}</td>
+                            <td>
+                                @if ($isi->jenis_kegiatan == 'a')
+                                    Kegiatan A
+                                @elseif ($isi->jenis_kegiatan == 'b')
+                                    Kegiatan B
+                                @elseif ($isi->jenis_kegiatan == 'c')
+                                    Kegiatan C
+                                @else
+                                    Tidak Diketahui
+                                @endif
+                            </td>
+                            <td>{{$isi ->created_at}}</td>
                             <td>
                             <a href="{{ asset('storage/' . $isi->file) }}" target="_blank">
                                 {{ \Illuminate\Support\Str::limit($isi->file, 20) }} <!-- Batasi menjadi 20 karakter -->
                             </a>
                             </td>
                             <td>
-                                Diproses
+                                {{ $isi->status ?? 'diproses' }}
                             </td>
                             <td>
-                                <a href ="/tampildata/{{ $isi->id }}" type="button" class="btn-upload" >Edit</a>
-                                <a href ="/delet/{{ $isi->id }}" type="button" class="btn-delete">Delete</a>
+                                {{ $isi->catatan_koreksi ?? 'Tidak ada catatan' }}
+                            </td>
+                            <td>
+                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                                    <a href="/tampildata/{{ $isi->id }}" type="button" class="btn-upload">Edit</a>
+                                    <a href="/delet/{{ $isi->id }}" type="button" class="btn-delete">Delete</a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
