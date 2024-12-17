@@ -18,7 +18,6 @@ Route::get('/dashboard', [PegawaiController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
-
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -27,13 +26,10 @@ Route::get('/dashboard', [PegawaiController::class, 'index'])
 
 require __DIR__.'/auth.php';
 
-// Route untuk admin dashboard
 Route::get('admin/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
-// Route untuk superadmin dashboard
 Route::get('superadmin/dashboard', [SuperAdminController::class, 'index'])->middleware(['auth', 'superadmin'])->name('superadmin.dashboard');
 
-// Route untuk PegawaiController
 Route::get('pegawai/dashboard', [PegawaiController::class, 'index'])->middleware(['auth', 'verified'])->name('pegawai.dashboard');
 
 Route::get('/tambah', [PegawaiController::class, 'tambah'])->middleware(['auth', 'verified'])->name('tambah');
@@ -48,13 +44,18 @@ Route::get('/delet/{id}', [PegawaiController::class, 'delete'])->middleware(['au
 Route::get('/profile/edit', [DatadiriController::class, 'create'])->name('datadiri.create');
 Route::post('/profile/store', [DatadiriController::class, 'store'])->name('datadiri.store');
 
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
 Route::get('/admin/koreksi/{id}', [AdminController::class, 'showKoreksi'])->name('koreksi.show');
 Route::put('/admin/koreksi/{id}', [AdminController::class, 'updateKoreksi'])->name('koreksi.update');
 
+Route::put('/admin/verifikasi/{id}', [AdminController::class, 'verifikasi'])->name('admin.verifikasi');
 
+Route::get('/superadmin/dashboard', [SuperAdminController::class, 'dashboardSuperadmin'])->name('superadmin.dashboard');
 
-// Route untuk DatadiriController
-Route::get('/profile/edit', [DatadiriController::class, 'create'])->name('datadiri.create');
-Route::post('/profile/store', [DatadiriController::class, 'store'])->name('datadiri.store');
+Route::get('/superadmin/Verifikasi/{id}', [SuperAdminController::class, 'showVerifikasi'])->name('verifikasi.show');
+Route::put('/superadmin/Verifikasi/{id}', [SuperAdminController::class, 'updateVerifikasi'])->name('verifikasi.update');
+
+Route::put('/superadmin/verifikasi/{id}', [SuperAdminController::class, 'verifikasi'])->name('superadmin.verifikasi');
 
 
