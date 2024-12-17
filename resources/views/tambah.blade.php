@@ -93,13 +93,13 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Periode Penilaian Mulai</label>
-                                <input type="date" name="periodemulai" class="form-control" id="periodeStart" value="">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Periode Penilaian Selesai</label>
-                                <input type="date" name="periodeselesai" class="form-control" id="periodeEnd" value="">
+                                <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
+                                <select name="jenis_kegiatan" id="jenis_kegiatan" class="form-control" required>
+                                    <option value="">-- Pilih Jenis Kegiatan --</option>
+                                    <option value="a">Kegiatan A</option>
+                                    <option value="b">Kegiatan B</option>
+                                    <option value="c">Kegiatan C</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">

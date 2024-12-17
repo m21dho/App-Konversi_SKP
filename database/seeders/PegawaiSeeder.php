@@ -16,9 +16,9 @@ class PegawaiSeeder extends Seeder
         DB ::table('pegawais')-> insert([
             'pegawai' => 'Surya Pramadani',
             'penilai' => 'Ramadhan Saputra',
-            'periodemulai' => '12 November sd 12 Desember',
-            'periodeselesai' => '12 November sd 12 Desember',
+            'jenis_kegiatan' => 'b',
             'file' => 'APPL_DFD.pdf',
+            'catatan_koreksi' => 'test',
         ]);
     }
 }
