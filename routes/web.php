@@ -18,6 +18,7 @@ Route::get('/dashboard', [PegawaiController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
+
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -49,5 +50,11 @@ Route::post('/profile/store', [DatadiriController::class, 'store'])->name('datad
 
 Route::get('/admin/koreksi/{id}', [AdminController::class, 'showKoreksi'])->name('koreksi.show');
 Route::put('/admin/koreksi/{id}', [AdminController::class, 'updateKoreksi'])->name('koreksi.update');
+
+
+
+// Route untuk DatadiriController
+Route::get('/profile/edit', [DatadiriController::class, 'create'])->name('datadiri.create');
+Route::post('/profile/store', [DatadiriController::class, 'store'])->name('datadiri.store');
 
 
