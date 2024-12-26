@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div >
-        <div class="w-full md:w-1/2 max-w-md p-8 space-y-8 bg-white rounded-lg m-auto">
+        <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg m-auto">
             <div class="">
                 <h1 class="text-2xl font-bold text-gray-800" style="font-size: 30px; font-weight: bold; font-family:helvetica;;">Sign In</h1>
                 <p class="text-gray-600 mt-1">Sign in and get started on your projects</p>
@@ -30,7 +30,7 @@
 
                 <!-- Sign In Button -->
                 <div style="margin-top: 20px;">
-                    <button type="submit" class="w-full py-2 px-4 text-white text-sm font-semibold  rounded-lg focus:outline-none border-2 border-red-500" style="background-color: #077C0D;"onmouseover="this.style.backgroundColor='#26902B'; this.style.color='white';" 
+                    <button type="submit" class="w-full py-2 px-4 text-white text-sm font-semibold  rounded-lg focus:outline-none border-2" style="background-color: #077C0D;"onmouseover="this.style.backgroundColor='#26902B'; this.style.color='white';" 
                     onmouseout="this.style.backgroundColor='#077C0D'; this.style.color='white';">
                     Sign in
                     </button>
