@@ -46,7 +46,7 @@
         </div>
 
         <div style="margin-top: 20px;">
-                <button type="submit" class="w-full py-2 px-4 text-white text-sm font-semibold  rounded-lg focus:outline-none border-2 border-red-500" style="background-color: #077C0D;"onmouseover="this.style.backgroundColor='#26902B'; this.style.color='white';" 
+                <button type="submit" class="w-full py-2 px-4 text-white text-sm font-semibold  rounded-lg focus:outline-none border-2" style="background-color: #077C0D;"onmouseover="this.style.backgroundColor='#26902B'; this.style.color='white';" 
                 onmouseout="this.style.backgroundColor='#077C0D'; this.style.color='white';">
                 Sign up
                 </button>
