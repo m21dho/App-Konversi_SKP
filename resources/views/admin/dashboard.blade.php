@@ -71,6 +71,21 @@
                             padding: 20px;
                             color: white;
                         }
+                        .status-label {
+                            padding: 5px 10px;
+                            border-radius: 5px;
+                            color: white;
+                            display: inline-block;
+                        }
+                        .status-diproses {
+                            background-color: yellow;
+                        }
+                        .status-koreksi {
+                            background-color: red;
+                        }
+                        .status-selesai {
+                            background-color: green;
+                        }
                     </style>
                     <h1 class="h1">Data SKP</h1>
                     <table class="table">
@@ -114,7 +129,17 @@
                                         <a href="{{ route('koreksi.show', $isi->id) }}" type="button" class="btn">Koreksi</a>
                                     </div>
                                 </td>
-                                <td>{{ $isi->status }}</td>
+                                <td>
+                                    <span class="status-label
+                                        @if($isi->status == 'Diproses') status-diproses
+                                        @elseif($isi->status == 'Koreksi') status-koreksi
+                                        @elseif($isi->status == 'Selesai') status-selesai
+                                        @else status-default
+                                        @endif
+                                        ">
+                                        {{ $isi->status ?? 'Diproses' }}
+                                    </span>
+                                </td>
                                 <td>
                                     <div class="notif" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                                         <form action="{{ route('admin.verifikasi', $isi->id) }}" method="POST">
