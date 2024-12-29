@@ -11,17 +11,20 @@
                 <div class="p-6 text-gray-900">
                     <style>
                         h3 {
-                            background-color: #f0f8ff; /* Warna isi di dalam border */
-                            border: 2px solid #007bff; /* Warna dan ketebalan border */
-                            color: #333; /* Warna teks */
+                            background-color: #060761; /* Warna isi di dalam border */
+                            border: 2px solid white; /* Warna dan ketebalan border */
+                            color: white; /* Warna teks */
                             padding: 10px 20px; /* Jarak isi elemen dari tepi */
                             border-radius: 5px; /* Sudut border melengkung */
                             margin-bottom: 30px; /* Jarak elemen dari elemen lain di bawahnya */
                             text-align: center; /* Posisikan teks di tengah */
                             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahan bayangan untuk efek */
                         }
+                        .h5{
+                            color: red;
+                        }
                         .btn {
-                            background-color: #007bff;
+                            background-color: #060761;
                             color: white;
                             padding: 10px 20px;
                             border: none;
@@ -29,7 +32,7 @@
                             cursor: pointer;
                         }
                         .btn:hover {
-                            background-color: #0056b3;
+                            background-color: #0d0fd9;
                         }
                     </style>
                     <h3>Detail Data</h3>
@@ -63,6 +66,9 @@
                             <th class="border px-4 py-2">Catatan Koreksi</th>
                             <td class="border px-4 py-2">
                                     <textarea name="catatan_koreksi" class="w-full border p-2" rows="4" placeholder="Masukkan catatan">{{ $data->catatan_koreksi }}</textarea>
+                                    <div class="flex-container">
+                                        <h5 class="h5">*Tambahkan catatan apa yang harus dikoreksi</h5>
+                                    </div>
                                     <button type="submit" class="btn mt-2">Simpan</button>
                                 </form>
                             </td>
