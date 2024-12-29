@@ -24,12 +24,19 @@ Route::get('/dashboard', [PegawaiController::class, 'index'])
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+
 require __DIR__.'/auth.php';
 
+// Route untuk admin dashboard
 Route::get('admin/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
+// Route untuk superadmin dashboard
 Route::get('superadmin/dashboard', [SuperAdminController::class, 'index'])->middleware(['auth', 'superadmin'])->name('superadmin.dashboard');
 
+// Route untuk PegawaiController
 Route::get('pegawai/dashboard', [PegawaiController::class, 'index'])->middleware(['auth', 'verified'])->name('pegawai.dashboard');
 
 Route::get('/tambah', [PegawaiController::class, 'tambah'])->middleware(['auth', 'verified'])->name('tambah');
@@ -57,5 +64,3 @@ Route::get('/superadmin/Verifikasi/{id}', [SuperAdminController::class, 'showVer
 Route::put('/superadmin/Verifikasi/{id}', [SuperAdminController::class, 'updateVerifikasi'])->name('verifikasi.update');
 
 Route::put('/superadmin/verifikasi/{id}', [SuperAdminController::class, 'verifikasi'])->name('superadmin.verifikasi');
-
-
